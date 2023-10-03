@@ -22,9 +22,11 @@ class RR:
             if process.burst_time > self.quantum:
                 self.result.append((process.name, self.quantum))
                 process.burst_time -= self.quantum
-                self.processes.append(process)  # Move to the end of the queue
+                self.processes.append(process)
+                print(f"Processo {process.name} - Tempo restante: {process.burst_time}")
             else:
                 self.result.append((process.name, process.burst_time))
+                print(f"Processo {process.name} concluído")
             self.rounds += 1
         self.calculate_waiting_time()
         self.calculate_turnaround_time()
